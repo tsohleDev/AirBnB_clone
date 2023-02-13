@@ -1,0 +1,35 @@
+section.places {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+div.places-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+section.places h1 {
+  top: 0;
+  left: 0;
+  font-size: 30px;
+}
+
+section.places article {
+  width: 390px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #FF5A5F;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+section.places article h2 {
+  font-size: 30px;
+  padding-bottom: 25px;
+}

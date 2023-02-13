@@ -1,0 +1,19 @@
+header {
+  background-color: white;
+  height: 70px;
+  width: 100%;
+  border-bottom: 1px #CCCCCC solid;
+  line-height: 70px;
+}
+
+a.logo {
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  width: 142px;
+  height: 60px;
+  vertical-align: middle;
+  position: relative;
+  left: 20px;
+}

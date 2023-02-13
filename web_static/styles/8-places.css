@@ -1,0 +1,109 @@
+section.places {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+div.places-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+section.places h1 {
+  top: 0;
+  left: 0;
+  font-size: 30px;
+}
+
+section.places article {
+  padding: 20px;
+  margin: 20px;
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #FF5A5F;
+  border-radius: 4px;
+}
+
+section.places article div.title {
+  width: 100%;
+  position: relative;
+}
+section.places article div.title h2 {
+  padding-bottom: 25px;
+  font-size: 30px;
+  text-align: center;
+}
+
+section.places article div.title div.price_by_night {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+  color: #FF5A5F;
+  border: 4px #FF5A5F solid;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+}
+
+section.places article div.information {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+section.places article div.information div {
+  width: 100px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+}
+
+section.places article div.information div.logo {
+  width: 100px;
+  height: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+section.places article div.information div.max_guest div.logo {
+  background-image: url("../images/icon_group.png");
+}
+
+section.places article div.information div.number_rooms div.logo {
+  background-image: url("../images/icon_bed.png");
+}
+
+section.places article div.information div.number_bathrooms div.logo {
+  background-image: url("../images/icon_bath.png");
+}
+
+section.places article div.user {
+  margin: 10px 0;
+}
+
+section.places article div.description {
+}
+
+section.places article div.information div span {
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
