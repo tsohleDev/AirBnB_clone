@@ -70,6 +70,4 @@ The test for the classes are in the [test_models](./tests/test_models/) folder.
 
 ~ [LinkedIn](https://www.linkedin.com/in/tsohle) 
 
-~ [Twitter](https://twitter.com/Realtsohle):
-*Sharpening my skills at Alx School of Software Engineering. I have a lifelong passion for programming with a background in mathematics and a daily meditation practice. Spent the last several
-years enjoying working as a private tutor and am now excited to practice software wizardry professionally.*
+~ [Twitter](https://twitter.com/Realtsohle)
