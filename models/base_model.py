@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Module for Base class
-Contains the Base class for the AirBnB clone console.
+BaseModel class is the base of all classes in this project.
+every class inherits from BaseModel class.
+each model represents a record in a database table.
 """
 
 import uuid
@@ -9,8 +11,7 @@ from models import storage
 
 
 class BaseModel:
-
-    """Class for base model of object hierarchy."""
+    """Class for base model of our data instance representation."""
 
     def __init__(self, *args, **kwargs):
         """Initialization of a Base instance.
@@ -28,7 +29,7 @@ class BaseModel:
                 elif key == "updated_at":
                     self.__dict__["updated_at"] = datetime.strptime(
                         kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                else:
+                elif key != "__class__":
                     self.__dict__[key] = kwargs[key]
         else:
             self.id = str(uuid.uuid4())
