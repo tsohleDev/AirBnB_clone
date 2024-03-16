@@ -1,61 +1,46 @@
-#!/usr/bin/python3
-"""Module for Base class
-BaseModel class is the base of all classes in this project.
-every class inherits from BaseModel class.
-each model represents a record in a database table.
-"""
-
+#!/usr/bin/env python3
+"""Base model for all models in our object relational mapping."""
 import uuid
-from datetime import datetime
-from models import storage
-
+import datetime
 
 class BaseModel:
-    """Class for base model of our data instance representation."""
-
+    """Base model for all models in our object relational mapping."""
     def __init__(self, *args, **kwargs):
-        """Initialization of a Base instance.
-
-        Args:
-            - *args: list of arguments
-            - **kwargs: dict of key-values arguments
-        """
-
-        if kwargs is not None and kwargs != {}:
-            for key in kwargs:
-                if key == "created_at":
-                    self.__dict__["created_at"] = datetime.strptime(
-                        kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key == "updated_at":
-                    self.__dict__["updated_at"] = datetime.strptime(
-                        kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-                elif key != "__class__":
-                    self.__dict__[key] = kwargs[key]
+        """Initialize the base model."""
+        # If the dictionary is not empty, set the model's attributes
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                if key != "__class__":
+                    setattr(self, key, value)
+        # If the dictionary is empty, set the model's attributes
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            storage.new(self)
-
-    def __str__(self):
-        """Returns a human-readable string representation
-        of an instance."""
-
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def save(self):
-        """Updates the updated_at attribute
-        with the current datetime."""
-
-        self.updated_at = datetime.now()
-        storage.save()
+        """Save the model to the database."""
+        self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
-        """Returns a dictionary representation of an instance."""
+        """Return a dictionary representation of the model."""
+        # Create a dictionary with the model's attributes
+        model_dict = self.__dict__.copy()
+        # Replace the datetime objects with their string representations
+        model_dict["created_at"] = model_dict["created_at"].isoformat()
+        model_dict["updated_at"] = model_dict["updated_at"].isoformat()
+        # Add the class name to the dictionary
+        model_dict["__class__"] = self.__class__.__name__
+        return model_dict
 
-        my_dict = self.__dict__.copy()
-        my_dict["__class__"] = type(self).__name__
-        my_dict["created_at"] = my_dict["created_at"].isoformat()
-        my_dict["updated_at"] = my_dict["updated_at"].isoformat()
-        return my_dict
+
+    def delete(self):
+        """Delete the model from the database."""
+        self.delete()
+
+    def __str__(self):
+        """Return a string representation of the model."""
+        # [<class name>] (<self.id>) <self.__dict__>
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
